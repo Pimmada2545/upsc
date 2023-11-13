@@ -13,7 +13,7 @@ include_once ("checklogin.php");
 
 <head>
     <meta charset="utf-8">
-    <title>Admin</title>
+    <title>Logs</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -126,23 +126,7 @@ include_once ("checklogin.php");
 
             <!-- Sale & Revenue Start -->
             
-            <div class="container-fluid pt-4 px-4" >
-                <div class="row g-4">
-                    <div  class="col-sm-6 col-xl-3">
-                        <a href="insert.php">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-plus-circle fa-3x text-primary"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">เพิ่มข้อมูล</p>
-                                <h6 class="mb-0">Insert</h6>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    
-                   
-                </div>
-            </div>
+           
             
             <!-- Sale & Revenue End -->
 
@@ -152,7 +136,7 @@ include_once ("checklogin.php");
                 <div class="card">
                     <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Devices</h6>
+                        <h6 class="mb-0">Logs</h6>
                     </div>
                     <div class="row">
                     <div class="col-12">
@@ -163,43 +147,49 @@ include_once ("checklogin.php");
                                 <tr class="text-dark">
                                    
                                     <th>ID</th>
-                                    <th>UPS Name</th>
-                                    <th>Model</th>
-                                    <th>Company</th>
-                                    <th>Token</th>
-                                    <th>Location</th>
-                                    <th>Remark</th>
-                                    <th>Time</th>
-                                    <th>ID Employee</th>
-                                    <th>...</th>
+                                    <th>Input Voltage</th>
+                                    <th>Output Voltage</th>
+                                    <th>Input Frequency</th>
+                                    <th>UPS Temperature</th>
+                                    <th>Bettery Charge</th>
+                                    <th>Output load</th> 
+                                    <th>Battery Voltage</th>
+                                    <th>UPS Status</th>
+                                    <th>Temperature Room</th>
+                                    <th>Humidity Room</th>
+                                    <th>Time Record</th>
+                                    <th>Device ID</th>
+                                    <th>RecordWhen</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
                         include ("condb.php");
-                        $sql1="SELECT * FROM `devices` ";
+                        $sql1="SELECT * FROM `logs` ";
                         $rs = mysqli_query($conn,$sql1);
                         if ($rs->num_rows > 0) {
 
                           while($data = $rs->fetch_assoc()) {
                          ?>
                                 <tr>
-                                <td> <?php echo $data['d_id']; ?></td>
-                                <td> <?php echo $data['d_upsname']; ?> </td>
-                                <td><?php echo $data['d_model'];?> </td>
-                                <td> <?php echo $data['d_company'];?></td>
-                                <td> <?php 
-                                $token_short = strlen($data['d_token']) > 15 ? substr($data['d_token'], 0, 15) . '...' : $data['d_token'];
-                                echo $token_short;                                
-                                ?></td>
-                                <td> <?php echo $data['d_location'];?></td>
-                                <td> <?php echo $data['d_remark'];?></td>
-                                <td> <?php echo $data['d_record'];?></td>
-                                <td> <?php echo $data['d_idemp'];?></td>
-                                <td>
+                                <td> <?php echo $data['id']; ?></td>
+                                <td> <?php echo $data['input_voltage']; ?> </td>
+                                <td><?php echo $data['output_voltage'];?> </td>
+                                <td> <?php echo $data['input_frequency'];?></td>
+                                <td> <?php echo $data['ups_temperature']; ?></td>
+                                <td> <?php echo $data['bettery_charge'];?></td>
+                                <td> <?php echo $data['output_load'];?></td>
+                                <td> <?php echo $data['bettery_voltage'];?></td>
+                                <td> <?php echo $data['ac_indicator'];?></td>
+                                <td> <?php echo $data['temp_room']; ?></td>
+                                <td> <?php echo $data['humid_room'];?></td>
+                                <td> <?php echo $data['time_record'];?></td>
+                                <td> <?php echo $data['device_id'];?></td>
+                                <td> <?php echo $data['recordwhen'];?></td>
+                                <!-- <td>
                                 <input type="button" class="btn btn-warning rounded-pill m-2" value="Edit"  onclick="window.location='edit.php?did=<?=$data['d_id'];?>'" />
                                 <input type="button" class="btn btn-danger rounded-pill m-2" value="Delete"  onclick="window.location='delete.php?did=<?=$data['d_id'];?>'" > 
-                                </td>
+                                </td> -->
                                 </tr>
                                 <?php }
                         @$conn->close(); ?>                 
