@@ -97,7 +97,7 @@ include_once ("checklogin.php");
                     
                 </div>
                 <div class="navbar-nav w-100">
-                <a href="home.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Device</a> <br>
+                <a href="home.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Devices</a> <br>
                 <a href="logs.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Logs</a> <br>
                 <a href="logout.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Logout</a> 
                 </div>
